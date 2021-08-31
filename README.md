@@ -1,21 +1,20 @@
 # SAGBAC
 Semi-Automated Graph-Based Assembly Curator
 
-## Install instructions
-* Each assembly should be processed in a newly created directory!
-* Create a new directory which will be your "work directory".
-* Go into the "work directory" and clone the SAGBAC repository.
-
 ## Dependencies
 Please be sure to install the following programs in order to be able to run SAGBAC properly.
 
-Legacy BLAST: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/
+* Legacy BLAST: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/
+* BWA 0.7.17 (or newer version): https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2
+* Samtools 1.9 (or newer version): https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
+* UCSC utilities: http://hgdownload.soe.ucsc.edu/admin/exe/
 
-BWA 0.7.17 (or newer version): https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2
+## Install instructions
+* Each assembly should be processed in a newly created directory!
+* Clone the SAGBAC repository and rename the SAGBAC directory with a name of your choice.
+* Go into the renamed SAGBAC directory 
 
-Samtools 1.9 (or newer version): https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
 
-UCSC utilities: http://hgdownload.soe.ucsc.edu/admin/exe/
 
 After downloading and installing the software, please be sure to assign the correct commands in the very first lines for the variables "bwa", "samtools", "formatdb", "blastall" in the ISEIS.sh shellscript.
 
