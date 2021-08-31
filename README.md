@@ -29,7 +29,7 @@ After downloading and installing the software, please be sure to assign the corr
 * open iGraph_Bert_allLevels_CleanedUp_1_noChanges.pdf which was created in your initial_graph_4Bert directory
 
 ## Generate final graph for O. villaricae
-* Rscript </path/to/work directory>/SAGBAC.R generateGraph </path/to/work directory>/initial_graph_4Bert/ IDBA_assemblies_berS.fasta.blastout.cutted.tsv berS_illumina-ON-IDBA_assemblies_berS.fasta 49 berS RemoveSmallContigs 0 '854,864,873' '' 1 1.1
+* Rscript </path/to/work directory>/SAGBAC.R generateGraph </path/to/work directory>/initial_graph_berS/ IDBA_assemblies_berS.fasta.blastout.cutted.tsv berS_illumina-ON-IDBA_assemblies_berS.fasta 49 berS RemoveSmallContigs 0 '854,864,873' '' 1 1.1
 * open iGraph_Bert_allLevels_CleanedUp_1_RemoveSmallContigs.pdf which was also created in your initial_graph_4Bert directory
 
 ## Reorder Blast output
