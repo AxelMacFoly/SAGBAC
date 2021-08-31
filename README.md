@@ -3,8 +3,8 @@ Semi-Automated Graph-Based Assembly Curator
 
 ## Install instructions
 * Each assembly should be processed in a newly created directory!
-* Create a new directory which will be your <work directory>.
-* Go into the <work directory> and clone the SAGBAC repository.
+* Create a new directory which will be your "work directory".
+* Go into the "work directory" and clone the SAGBAC repository.
 
 ## Dependencies
 Please be sure to install the following programs in order to be able to run SAGBAC properly.
@@ -25,12 +25,21 @@ After downloading and installing the software, please be sure to assign the corr
 * Download the SRA accessions XXX with fastq_dump or directly from the NCBI SRA homepage.
 
 ## Generate initial graph for O. villaricae
-* bash ISEIS.sh </path/to/work directory>/IDBA_443revcomp_adaptedToNewFinalBert.srt.fa Bert </path/to/work directory>/example_data/<SRA_R1.fastq> </path/to/work directory>/example_data/<SRA_R1.fastq> initial_graph_4Bert 3 noChanges 100,3000,1000 1,2,3
-* open iGraph_Bert_allLevels_CleanedUp_1_<actual DATE>_noChanges.pdf which was created in your <work directory>/initial_graph_4Bert
-  
+* bash SAGBAC.sh "</path/to/work directory>"/IDBA_assemblies_berS.fasta Bert "</path/to/work directory>"/example_data/"<SRA_R1.fastq>" "</path/to/work directory>"/example_data/"<SRA_R1.fastq>" initial_graph_4Bert 3 noChanges 100,3000,1000 1,2,3
+* open iGraph_Bert_allLevels_CleanedUp_1_noChanges.pdf which was created in your initial_graph_4Bert directory
+
 ## Generate final graph for O. villaricae
-* Rscript </path/to/work directory>/ISEIS_wDiffScriptModes.R generateGraph </path/to/work directory>/initial_graph_4Bert/ IDBA_assemblies_berS.fasta.blastout.cutted.tsv Bert_illumina-ON-IDBA_assemblies_berS.fasta 49 Bert RemoveSmallContigs 0 '854,864,873' '' 1 1.1
-* open iGraph_Bert_allLevels_CleanedUp_1_<actual DATE>_RemoveSmallContigs.pdf
+* Rscript </path/to/work directory>/SAGBAC.R generateGraph </path/to/work directory>/initial_graph_4Bert/ IDBA_assemblies_berS.fasta.blastout.cutted.tsv Bert_illumina-ON-IDBA_assemblies_berS.fasta 49 Bert RemoveSmallContigs 0 '854,864,873' '' 1 1.1
+* open iGraph_Bert_allLevels_CleanedUp_1_RemoveSmallContigs.pdf which was also created in your initial_graph_4Bert directory
+
+## Reorder Blast output
+* Rscript "</path/to/work directory>"/SAGBAC.R reorderBlastOutput "</path/to/work directory>"/initial_graph_Bert Blastdata4MastercirclePath_Bert_DATE_RemoveSmallContigs.txt newOrder_bertMergePath.csv Bert_illumina-ON-IDBA_assemblies_berS
+
+## Generate Master circle
+* Rscript "</path/to/work directory>"/SAGBAC.R generateMasterCircle "</path/to/work directory>"/initial_graph_Bert Reordered_Blastdata4MastercirclePath_Bert_DATE_removeSmallContigs.txt IDBA_assemblies_berS.fasta MasterCircle.fasta "Oenothera villaricae [mitochondrion]"
+
+## Predicting PMG isoforms
+Rscript "</path/to/work directory>"/SAGBAC.R calculateSubcircles "</path/to/work directory>"/initial_graph_Bert graphML_Bert_DATE_removeSmallContigs.xml '121,443,518,539,795,773' 2 predictions.pdf
 
 ## Citation
 Please cite the following paper if you used SAGBAC for your data analysis:
