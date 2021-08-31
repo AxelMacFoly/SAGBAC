@@ -926,5 +926,5 @@ if(script.mode=="generateGraph" & length(commandArgs(TRUE))!=12) {
 ##             }
 ##         }
 ##     }    
-## }
+}
 
