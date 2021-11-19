@@ -44,9 +44,9 @@ read_length=`echo $cutoffs_string | cut -f1 -d','`
 cov_cutoff=`echo $cutoffs_string | cut -f2 -d','`
 size_cutoff=`echo $cutoffs_string | cut -f3 -d','`
 steps=$9
-if [[ ! -e $workdir ]]; then
+if [ ! -e $workdir ]; then
     mkdir $workdir
-elif [[ ! -d $workdir ]]; then
+elif [ ! -d $workdir ]; then
     echo "$dir already exists but is not a directory" 1>&2
 fi
 cp $fafile ${workdir}/.
