@@ -452,12 +452,17 @@ if(script.mode=="generateGraph" & length(commandArgs(TRUE))!=12) {
     result.L <- endings2graph(alllevel.endings.allCombs.dF[,c("h.endings","q.endings")],ale.dF)
     ale.graph <- result.L[[1]]
     unlinked.V <- as.integer(result.L[[2]])
-
+    adj.L <- result.L[[3]]
+    cat("Graph statistics:\n")
+    cat("# of Vertices:\t",length(adj.L),"\n")
+    cat("# of Edges:\t",sum(sapply(adj.L,length))/2,"\n")
+    cat("# of user-defined removed vertices:\t",length(manual.excluded)*2,"\n")
+    cat("# of user-defined removed edges:\t",length(manual.excluded.pairs.L),"\n")
     ## ale.dF[sapply(result.L[[3]],length)==1,1]
 
     if(length(unlinked.V!=0)) {
-        cat("Unlinked contigs saved under: Processed_Blastoutput_for_unlinked_contigs4manualCuration.csv\n")
-        write.table(blastALL.dF[blastALL.dF$qchrnum %in% unlinked.V & blastALL.dF$hchrnum %in% unlinked.V & blastALL.dF$qchrnum != blastALL.dF$hchrnum,],"Processed_Blastoutput_for_unlinked_contigs4manualCuration.csv",quote = FALSE,col.names = TRUE,row.names = FALSE,sep = "\t")
+         cat(paste("BlastOutput_of_unlinkedVertices4manualCuration_",out.prefix,"_",gsub("-","",Sys.Date()),"_",out.suffix,".txt",sep=""),"\n")
+         write.table(blastALL.dF[blastALL.dF$qchrnum %in% unlinked.V & blastALL.dF$hchrnum %in% unlinked.V & blastALL.dF$qchrnum != blastALL.dF$hchrnum,],paste("BlastOutput_of_unlinkedVertices4manualCuration_",out.prefix,"_",gsub("-","",Sys.Date()),"_",out.suffix,".txt",sep=""),quote = FALSE,col.names = TRUE,row.names = FALSE,sep = "\t")
     }
 
     contigs.in.graph.file <- paste("Contigs_in_graph_",out.prefix,"_",gsub("-","",Sys.Date()),"_",out.suffix,".txt",sep="")
